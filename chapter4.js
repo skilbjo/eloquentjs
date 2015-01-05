@@ -37,7 +37,7 @@ var reverseArray = function(arr) {
 console.log(reverseArray(things));
 
 // A List
-console.log('\n==== A List ===');
+console.log('\n==== a List ===');
 console.log('status = 50%');
 
 var arrayToList = function(arr) {
@@ -68,6 +68,7 @@ console.log(listToArray(list));
 
 // Deep Comparison
 console.log('\n==== Deep Comparison ===');
+console.log('status = 50%');
 
 var deepEqual = function (first, second) {
 	if ( (typeof first) === (typeof second) ) {
@@ -81,6 +82,6 @@ var deepEqual = function (first, second) {
 	}
 };
 
-
+console.log(deepEqual( { 'hi': 'hi' }  , { 'hi': 'hi' }  ));
 
 
