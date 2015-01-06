@@ -34,10 +34,33 @@ var getMothers = function(arr) {
 };
 var mothers = getMothers(ancestry);
 
+var average = function(arr) {
+	function plus(a,b) { return a+b; }
+	return arr.reduce(plus) / arr.length;
+};
+
+var byName = {};
+ancestry.forEach(function(p) {
+	byName[p.name] = p;
+});
+
+console.log(byName);
+
+
+
+var mother = function(p) { return p.mother; };
+
+
 
 // Historical Life Expectancy
 console.log('\n==== Historical Life Expectancy, 0% ===');
 
+var eachAge = {};
+ancestry.forEach(function(p) {
+	eachAge[p.name] = { age: p.died - p.born, mother: p.mother };
+});
+
+console.log(eachAge);
 
 // Every and then Some
 console.log('\n==== Every and then some 100% ===');
