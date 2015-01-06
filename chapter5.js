@@ -35,12 +35,40 @@ var getMothers = function(arr) {
 var mothers = getMothers(ancestry);
 
 
-
-
 // Historical Life Expectancy
-console.log('\n==== Historical Life Expectancy ===');
+console.log('\n==== Historical Life Expectancy, 0% ===');
 
 
 // Every and then Some
-console.log('\n==== Every and then some ===');
+console.log('\n==== Every and then some 100% ===');
 
+
+var every = function(arr, predicate) {
+	var result = true;
+
+	for (var i = 0; i < arr.length; i++) {
+		if (arr[i] !== predicate) {
+			result = false; break;
+		}
+	}
+
+	return result;
+};
+
+var some = function(arr, predicate) {
+	var result = false;
+
+	for (var i = 0; i < arr.length; i++) {
+		if (arr[i] === predicate) {
+			result = true; break;
+		}
+	}
+
+	return result;
+};
+
+console.log(every([1,1,1],1)); // true
+console.log(every([1,2,1],1)); // false
+
+console.log(some([1,2,1],1)); // true
+console.log(some([1,2,1],3)); // false
