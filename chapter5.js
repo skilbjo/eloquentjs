@@ -1,3 +1,15 @@
+(function(_, g, u) {
+  typeOf = function(o) {
+    return o === g
+      ? "global"
+      : o == u
+        ? o === u
+          ? "undefined"
+          : "null"
+        : _.toString.call(o).slice(8, -1);
+  };
+})({}, this);
+
 // Flattening
 console.log('\n=== Flattening ====');
 
@@ -44,12 +56,19 @@ ancestry.forEach(function(p) {
 	byName[p.name] = p;
 });
 
-console.log(byName);
 
 
 
-var mother = function(p) { return p.mother; };
+var hasKnownMother = ancestry.filter(function(person) {
+	if (person.mother !== null) return person.mother;
+});
 
+var mother = {};
+hasKnownMother.forEach(function(person) {
+	mother[person.mother] =  person.mother;
+});
+
+console.log(mother);
 
 
 // Historical Life Expectancy
@@ -60,7 +79,7 @@ ancestry.forEach(function(p) {
 	eachAge[p.name] = { age: p.died - p.born, mother: p.mother };
 });
 
-console.log(eachAge);
+// console.log(eachAge);
 
 // Every and then Some
 console.log('\n==== Every and then some 100% ===');

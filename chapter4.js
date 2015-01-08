@@ -71,7 +71,9 @@ console.log('\n==== Deep Comparison ===');
 console.log('status = 50%');
 
 var deepEqual = function (first, second) {
-	if ( (typeof first) === (typeof second) ) {
+	this.first = JSON.stringify(first);
+	this.second = JSON.stringify(second);
+	if ( (typeof(first)) === (typeof(second)) ) {
 		if (first === second) {
 			return true;
 		} else {
@@ -82,6 +84,13 @@ var deepEqual = function (first, second) {
 	}
 };
 
-console.log(deepEqual( { 'hi': 'hi' }  , { 'hi': 'hi' }  ));
+var hi1 = { 'hi': 'hi'};
+var hi2 = { 'hi': 'hi'};
+
+if (hi1 == hi2) {
+	console.log('true');
+}
+
+console.log(deepEqual( [1,2]  , [1,2]  ));
 
 
