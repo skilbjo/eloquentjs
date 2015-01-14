@@ -3,7 +3,7 @@ var lolwut = function() {
 	return x;
 };
 
-console.log(' ==== Retry ==== ');
+console.log(' ==== Retry ==== 80% ');
 
 var MultiplicatorUnitFailure = function(msg) {
 	this.message = message;
@@ -24,7 +24,7 @@ var primitiveMultiply = function(err) {
 
 	try {
 		if (flag) {
-			console.log( 5 * 5);
+			console.log( Math.random() * Math.random());
 			return;
 		}
 		throw new Error(MultiplicatorUnitFailure);
@@ -37,6 +37,35 @@ var primitiveMultiply = function(err) {
 	}
 };
 
-primitiveMultiply();
+// primitiveMultiply();
+
+
+console.log(' === Locked Box === ');
+
+var box = {
+	locked: true,
+	unlock: function() { this.locked = false; },
+	lock: function() { this.locked = true; },
+	_content: [],
+	get content() {
+		if (this.locked) throw new Error('It`s locked!');
+		return this._content;
+	}
+};
+
+var withBoxUnlocked = function(box) {
+
+	try {
+		box.unlock();		
+	} finally {
+		return box.locked;
+	}
+
+};
+
+console.log(box.content());
+
+// console.log( withBoxUnlocked(box));
+
 
 
